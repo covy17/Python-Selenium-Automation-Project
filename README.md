@@ -6,4 +6,5 @@ The goal of this project of this project is to learn more about automating Web U
 
 ## Tools Used
 * Python
+* Pytest
 * Selenium Framework
