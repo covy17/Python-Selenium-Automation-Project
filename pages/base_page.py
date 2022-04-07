@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 
 class BasePage():
         
@@ -13,3 +14,7 @@ class BasePage():
 
     def go_to_page(self, url):
         self.driver.get(self.__url_dict[url])
+        
+    def mouse_hover_over_and_click_hidden_element(self, element, hidden_element):
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element).click(hidden_element).perform()
