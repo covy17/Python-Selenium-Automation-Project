@@ -18,7 +18,7 @@ class TestHomepage:
         actual_search_results = self.search_results_page.get_search_results()
         assert actual_search_results == expected_search_results
         
-    def test_add_to_cart(self):
+    def test_quick_add_to_cart(self):
         expected_message = "Product successfully added to your shopping cart"
         self.homepage = Homepage(self.driver, self.wait)
         self.homepage.go_to_page("homepage")
