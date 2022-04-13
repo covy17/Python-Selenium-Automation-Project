@@ -21,3 +21,6 @@ class Homepage(BasePage):
         element = self.driver.find_element(By.XPATH, "//ul[@id='homefeatured']/li[1]")
         hidden_element = self.driver.find_element(By.XPATH, "//ul[@id='homefeatured']/li[1]//a[@title='Add to cart']")
         self.mouse_hover_over_and_click_hidden_element(element, hidden_element)
+
+    def expand_item(self):
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, "//ul/li[1]//a[@class='product_img_link']"))).click()

@@ -11,3 +11,6 @@ class ProductPage(BasePage):
         super().__init__(
             driver, wait
             )
+
+    def add_item_to_cart_from_product_page(self):
+        self.wait.until(EC.element_to_be_clickable((By.XPATH, "//span[text()='Add to cart']"))).click()
