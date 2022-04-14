@@ -14,3 +14,7 @@ class ProductPage(BasePage):
 
     def add_item_to_cart_from_product_page(self):
         self.wait.until(EC.element_to_be_clickable((By.XPATH, "//span[text()='Add to cart']"))).click()
+        
+    def increase_item_quantity(self, count):
+        for i in range(count):
+            self.wait.until(EC.element_to_be_clickable((By.XPATH, "//i[@class='icon-plus']"))).click()
