@@ -16,7 +16,7 @@ class TestProductPage:
         self.homepage.go_to_page('homepage')
         self.homepage.expand_item()
         self.product_page.add_item_to_cart_from_product_page()
-        self.wait.until(EC.visibility_of_element_located((By.ID, "layer_cart")))
+        self.product_page.wait_for_product_added_modal_to_appear()
         assert self.driver.find_element(By.XPATH, f"//h2[contains(.,  '{expected_message}')]")
     
     def test_add_multiple_items_from_product_page(self):
@@ -28,15 +28,32 @@ class TestProductPage:
         self.homepage.expand_item()
         self.product_page.increase_item_quantity(2)
         self.product_page.add_item_to_cart_from_product_page()
-        self.wait.until(EC.visibility_of_element_located((By.ID, "layer_cart")))
+        self.product_page.wait_for_product_added_modal_to_appear()
         assert self.driver.find_element(By.XPATH, f"//h2[contains(.,  '{expected_message}')]")
         assert self.driver.find_element(By.ID, "layer_cart_product_quantity").text == expected_count
     
     def test_add_different_sized_item_from_product_page(self):
-        pass
+        size = "L"
+        self.homepage = Homepage(self.driver, self.wait)
+        self.product_page = ProductPage(self.driver, self.wait)
+        self.homepage.go_to_page('homepage')
+        self.homepage.expand_item()
+        self.product_page.select_item_size("L")
+        self.product_page.add_item_to_cart_from_product_page()
+        self.product_page.wait_for_product_added_modal_to_appear()
+        assert size in self.product_page.product_attribute_seperator()
     
     def test_add_different_colored_item_from_product_page(self):
-        pass
+        color = "Blue"
+        self.homepage = Homepage(self.driver, self.wait)
+        self.product_page = ProductPage(self.driver, self.wait)
+        self.homepage.go_to_page('homepage')
+        self.homepage.expand_item()
+        self.product_page.select_item_color(color)
+        self.product_page.add_item_to_cart_from_product_page()
+        self.product_page.wait_for_product_added_modal_to_appear()
+        assert color in self.product_page.product_attribute_seperator()
+
     
     def test_add_product_to_wish_list_not_logged_in(self):
         pass
