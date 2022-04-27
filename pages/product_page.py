@@ -18,6 +18,9 @@ class ProductPage(BasePage):
     def add_item_to_cart_from_product_page(self):
         self.wait.until(EC.element_to_be_clickable((By.XPATH, "//span[text()='Add to cart']"))).click()
         
+    def add_item_to_wishlist(self):
+        self.wait.until(EC.element_to_be_clickable((By.ID, "wishlist_button"))).click()
+        
     def increase_item_quantity(self, count):
         for i in range(count):
             self.wait.until(EC.element_to_be_clickable((By.XPATH, "//i[@class='icon-plus']"))).click()
@@ -30,3 +33,4 @@ class ProductPage(BasePage):
         
     def product_attribute_seperator(self):
         return self.wait.until(EC.visibility_of_element_located((By.ID, "layer_cart_product_attributes"))).text.split(", ")
+

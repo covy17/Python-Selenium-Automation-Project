@@ -56,7 +56,13 @@ class TestProductPage:
 
     
     def test_add_product_to_wish_list_not_logged_in(self):
-        pass
+        expected_alert_message = "You must be logged in to manage your wishlist."
+        self.homepage = Homepage(self.driver, self.wait)
+        self.product_page = ProductPage(self.driver, self.wait)
+        self.homepage.go_to_page('homepage')
+        self.homepage.expand_item()
+        self.product_page.add_item_to_wishlist()
+        assert self.wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "fancybox-error"))).text == expected_alert_message
     
     def test_add_prodcut_to_wish_list_logged_in(self):
         pass
