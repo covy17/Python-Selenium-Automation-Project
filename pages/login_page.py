@@ -26,4 +26,8 @@ class LoginPage(BasePage):
     def enter_account_creation_email_and_continue(self, email):
         self.wait.until(EC.element_to_be_clickable((By.ID, "email_create"))).send_keys(email)
         self.driver.find_element(By.ID, "SubmitCreate").click()
+
+    def quick_valid_login(self):
+        self.go_to_login_page()
+        self.enter_login_and_sign_in("covytest@test.com", "Test1")
         
