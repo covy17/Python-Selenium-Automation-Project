@@ -162,3 +162,7 @@ cython_debug/
 # VENV
 pyvenv.cfg
 /Scripts
+
+# REPORTING
+/assets
+report.html
