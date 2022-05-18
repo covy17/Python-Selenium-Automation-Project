@@ -9,7 +9,7 @@ class ContactUsPage(BasePage):
             driver, wait
             )
     
-    def fill_in_contact_us_form_and_send(self, subject_handling=None, email=None, order_reference=None, attach_file=None, message=None):
+    def fill_in_contact_us_form_and_send(self, subject_handling, email, order_reference, attach_file, message):
         self.wait.until(EC.visibility_of_element_located((By.ID, "uniform-id_contact")))
         subject_handling_element = self.driver.find_element(By.ID, "id_contact")
         if subject_handling:
